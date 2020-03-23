@@ -1,0 +1,13 @@
+[package]
+name = "yew_wee_alloc_leak_demo"
+version = "0.1.0"
+authors = ["Cliff Matthews <clifford.t.matthews@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+yew = { version = "0.14", features = ["web_sys"] }
+wasm-bindgen = "0.2"
+wee_alloc = "0.4.5"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
