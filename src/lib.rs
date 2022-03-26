@@ -1,10 +1,10 @@
 use {
     wasm_bindgen::prelude::*,
-    yew::prelude::*,
+    yew::{prelude::*,html::Scope},
 };
 
 pub struct App {
-    link: ComponentLink<Self>,
+    link: Scope<Self>,
     log_data: Vec<String>,
     lines: u32,
 }
@@ -18,7 +18,8 @@ impl Component for App {
     type Message = Msg;
     type Properties = ();
 
-    fn create(_: Self::Properties, link: ComponentLink<Self>) -> Self {
+    fn create(ctx: &Context<Self>) -> Self {
+        let link = ctx.link().clone();
         link.send_message(Msg::ReceivedData);
         Self {
             link,
@@ -27,7 +28,7 @@ impl Component for App {
         }
     }
 
-    fn update(&mut self, msg: Self::Message) -> ShouldRender {
+    fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
         const MAX_LINES: u32 = 1500;
         use Msg::*;
 
@@ -56,7 +57,7 @@ impl Component for App {
         true
     }
 
-    fn view(&self) -> Html {
+    fn view(&self, _ctx: &Context<Self>) -> Html {
         html! {
             <p>{
                 for self.log_data.iter().map(|line| {

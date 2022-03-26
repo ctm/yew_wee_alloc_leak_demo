@@ -1,4 +1,10 @@
-# Leak? with wee-alloc andyew-wasm-pack-template
+# Leak? with wee-alloc, yew-wasm-pack-template **and yew 14.x**
+
+The problem remported here is not demonstrated by this repository and
+_may_ no longer exist.  After upgrading crates and packages to the
+latest, except leaving yew pinned to 0.14 the bug was present on March
+26th.  However, by then yew 0.19 is current and once I upgraded to
+that, the bug doesn't appear.
 
 ## Background
 
